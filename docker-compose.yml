@@ -1,0 +1,12 @@
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis_bullmq
+    restart: always
+    ports:
+      - "${REDIS_PORT}:6379"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data:/data
